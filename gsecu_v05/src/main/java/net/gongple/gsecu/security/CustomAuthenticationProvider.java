@@ -26,10 +26,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		Collection<? extends GrantedAuthority> auths = null;
 		try {
 			user = userDetailsSvc.loadUserByUsername(username);
-			if(user == null) throw new UsernameNotFoundException("사용자 아이디를 찾을 수 없습니다.");
 			
 			System.out.println("@@@ input password : "+ password +" , password : "+ user.getPassword());
-			
 			if(!password.equals(user.getPassword())) {
 				throw new BadCredentialsException("비밀번호가 맞지 않습니다.");
 			} else {
